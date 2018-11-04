@@ -1,4 +1,4 @@
-package com.kamadjajax_driver;
+package com.mlskoding.kamadjajax_driver;
 
 import com.facebook.react.ReactActivity;
 
