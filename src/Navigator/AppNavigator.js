@@ -6,18 +6,23 @@ import {createStackNavigator, createBottomTabNavigator, createDrawerNavigator} f
 import {initializeListeners} from 'react-navigation-redux-helpers'
 import {navigationPropConstructor} from '../Utils/Redux'
 import SplashScreen from '../Screen/Splash/screen-splash'
+import HomeScreen from '../Screen/Home/sreen-home'
+import OrderScreen from '../Screen/Order/screen-order'
+import WalletScreen from '../Screen/Wallet/screen-wallet'
+import AccountScreen from '../Screen/Account/screen-account'
 import {connect} from "react-redux";
 import {addListener} from '../Utils/Redux';
 
-// export const Home = createBottomTabNavigator({
-//     Home: {screen: ScreenHome},
-//     News: {screen: ScreenNews},
-//     Event: {screen: ScreenEvent},
-//     Reserve: {screen: ScreenProfile},
-// })
+export const Home = createBottomTabNavigator({
+    Home: {screen: HomeScreen},
+    Order: {screen: OrderScreen},
+    Wallet: {screen: WalletScreen},
+    Account: {screen: AccountScreen},
+})
 
 export const AppNavigator = createStackNavigator({
     Splash: {screen: SplashScreen},
+    Menu:{screen:Home}
 
 }, {
     headerMode: 'none',
