@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-import {Container, Content, List, ListItem, Left, Body, Right, Thumbnail, Text} from 'native-base';
+import {Container, Content, List, ListItem, Left, Body, Right, Text} from 'native-base';
 import {connect} from "react-redux";
 import {View, TouchableWithoutFeedback} from "react-native"
 import {Header} from "../../Component/Header";
