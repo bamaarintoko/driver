@@ -1,8 +1,8 @@
 import React, {Component} from "react"
-import {Container, Content, Text,Button} from "native-base"
+import {Container, Content, Text, Button} from "native-base"
 import {connect} from "react-redux";
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
-import {StyleSheet, Dimensions, View} from "react-native"
+import {StyleSheet, Dimensions, View, TouchableWithoutFeedback} from "react-native"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Header} from "../../Component/Header";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
@@ -84,8 +84,13 @@ class ScreenPick extends Component {
                             </Text>
                         </View>
                     </View>
-                    <View style={{flexDirection: 'row', marginTop: 30, marginBottom: 30}}>
-                        <Text>look for shipping for the return route?</Text>
+
+                    <View style={{flexDirection: 'row', marginTop: 10, marginBottom: 10}}>
+                        <TouchableWithoutFeedback onPress={() => console.log("asdf")}>
+                            <View style={{height: 40, alignItems: "center",justifyContent: "center"}}>
+                                <Text>look for shipping for the return route?</Text>
+                            </View>
+                        </TouchableWithoutFeedback>
                     </View>
                     {/*<View style={{flexDirection: 'row', marginTop: 30}}>*/}
 
