@@ -7,7 +7,7 @@ class ScreenAccount extends Component{
     render(){
         return(
             <Container>
-                <Header title={"Account"}/>
+                <Header left={"arrow-right"} title={"Account"}/>
                 <Content>
                     <Text>Account</Text>
                 </Content>
