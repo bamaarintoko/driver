@@ -1,11 +1,11 @@
 import React, {Component} from "react"
 import {Container, Content, List, ListItem, Left, Body, Right, Text} from 'native-base';
 import {connect} from "react-redux";
-import {View, TouchableWithoutFeedback} from "react-native"
+import {View, TouchableWithoutFeedback, StyleSheet,Dimensions} from "react-native"
 import {Header} from "../../Component/Header";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-
+let {width, height} = Dimensions.get('window')
 class ScreenHome extends Component {
     render() {
         return (
@@ -18,17 +18,17 @@ class ScreenHome extends Component {
                                 <Left>
                                 </Left>
                                 <Body>
-                                <Text>Paket Buku</Text>
-                                <Text note>Delivery Date : 26 February 2019 07:00 PM</Text>
+                                <Text style={styles.text_title}>Paket Buku</Text>
+                                <Text style={styles.text_loc} note>Delivery Date : 26 February 2019 07:00 PM</Text>
                                 <View style={{flexDirection: 'row', alignItems: "center"}}>
                                     <View style={{flex: 2}}>
-                                        <Text note>Bantul, Yogyakarta</Text>
+                                        <Text style={styles.text_loc} note>Bantul, Yogyakarta</Text>
                                     </View>
                                     <View style={{flex: 1, alignItems: 'center'}}>
                                         <Icon name={"arrow-right"} size={wp("5%")}/>
                                     </View>
                                     <View style={{flex: 2}}>
-                                        <Text note>Sleman, Yogyakarta</Text>
+                                        <Text style={styles.text_loc} note>Sleman, Yogyakarta</Text>
                                     </View>
                                 </View>
                                 </Body>
@@ -41,17 +41,17 @@ class ScreenHome extends Component {
                                 <Left>
                                 </Left>
                                 <Body>
-                                <Text>Dokumen X</Text>
-                                <Text note>Delivery Date : 26 February 2019 07:00 PM</Text>
+                                <Text style={styles.text_title}>Dokumen X</Text>
+                                <Text style={styles.text_loc} note>Delivery Date : 26 February 2019 07:00 PM</Text>
                                 <View style={{flexDirection: 'row', alignItems: "center"}}>
                                     <View style={{flex: 2}}>
-                                        <Text note>Bantul, Yogyakarta</Text>
+                                        <Text style={styles.text_loc} note>Bantul, Yogyakarta</Text>
                                     </View>
                                     <View style={{flex: 1, alignItems: 'center'}}>
                                         <Icon name={"arrow-right"} size={wp("5%")}/>
                                     </View>
                                     <View style={{flex: 2}}>
-                                        <Text note>Sleman, Yogyakarta</Text>
+                                        <Text style={styles.text_loc} note>Sleman, Yogyakarta</Text>
                                     </View>
                                 </View>
                                 </Body>
@@ -65,7 +65,29 @@ class ScreenHome extends Component {
         )
     }
 }
+const styles = StyleSheet.create({
+    text_head: {
+        fontWeight: "bold",
+        fontSize: hp("3%")
 
+    },
+    text_loc: {
+        fontSize: hp("2%")
+    },
+    text_title: {
+        fontSize: hp("2.4%")
+    },
+    text_note: {
+        fontSize: hp("2.5%")
+    },
+    icn: {
+        width: wp("7%"), justifyContent: 'center', alignItems: 'center'
+    },
+    map: {
+        width: width,
+        height: hp("30%"),
+    }
+});
 function mapStateToProps() {
     return {}
 }
