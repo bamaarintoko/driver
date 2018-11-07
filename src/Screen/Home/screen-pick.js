@@ -1,16 +1,16 @@
 import React, {Component} from "react"
 import {Container, Content, Text, Button, List, ListItem, Left, Body, Right} from "native-base"
 import {connect} from "react-redux";
-import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
+import MapView, {PROVIDER_GOOGLE, Marker} from 'react-native-maps';
 import {StyleSheet, Dimensions, View, TouchableWithoutFeedback} from "react-native"
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Header} from "../../Component/Header";
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Spinner from 'react-native-spinkit';
 import Modal from "react-native-modal";
-
+import MapViewDirections from 'react-native-maps-directions';
 let {width, height} = Dimensions.get('window')
-
+let GOOGLE_MAPS_APIKEY="AIzaSyCJf2cmsLing8mvifAQo9LR9o_ubFbedIA"
 class ScreenPick extends Component {
     constructor(props) {
         super(props);
@@ -74,8 +74,8 @@ class ScreenPick extends Component {
                 <Header left={"arrow-left"} leftPress={() => this.props.navigation.goBack()} title={"Pick Order"}/>
                 <Modal isVisible={this.state.isModalVisible} onBackButtonPress={this.onKeyBack()}>
                     <View style={{flex: 1, backgroundColor: "#FFF"}}>
-                        <MapView
-                            provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+                        <MapView.Animated
+                            // provider={PROVIDER_GOOGLE} // remove if not using Google Maps
                             style={styles.map}
                             region={{
                                 latitude: -7.797068,
@@ -84,19 +84,42 @@ class ScreenPick extends Component {
                                 longitudeDelta: 0.0121,
                             }}
                         >
-                        </MapView>
-                        <View style={{flexDirection:"row", padding:5, marginTop:20}}>
-                            <View style={{flex:1}}>
+                            <MapView.Marker
+                                coordinate={{
+                                    latitude: -7.797068,
+                                    longitude: 110.370529
+                                }}
+                            />
+                            <MapView.Marker
+                                coordinate={{
+                                    latitude: -7.71556,
+                                    longitude: 110.35556
+                                }}
+                            />
+                            <MapViewDirections
+                                origin={{latitude: -7.797068,
+                                    longitude: 110.370529}}
+                                destination={{
+                                    latitude: -7.71556,
+                                    longitude: 110.35556
+                                }}
+                                strokeColor={"#B00020"}
+                                strokeWidth={3}
+                                apikey={GOOGLE_MAPS_APIKEY}
+                            />
+                        </MapView.Animated>
+                        <View style={{flexDirection: "row", padding: 5, marginTop: 20}}>
+                            <View style={{flex: 1}}>
                                 <Text>Pick up location</Text>
                                 <Text note>Pick up location</Text>
                             </View>
-                            <View style={{flex:1}}>
+                            <View style={{flex: 1}}>
                                 <Text>Drop off location</Text>
                                 <Text note>Drop off location</Text>
 
                             </View>
                         </View>
-                        <View style={{flexDirection: 'row', marginTop: 10, padding:5}}>
+                        <View style={{flexDirection: 'row', marginTop: 10, padding: 5}}>
                             <View style={{flex: 1}}>
                                 <Text style={styles.text_title}>
                                     Car
@@ -132,14 +155,15 @@ class ScreenPick extends Component {
                                 </Text>
                             </View>
                         </View>
-                        <View style={{position: 'absolute',bottom:0,width:'100%',padding:5, flexDirection:"row"}}>
-                            <View style={{flex:1, margin: 5}}>
-                                <Button full light onPress={this.onKeyBack()} style={{backgroundColor:"#FFCA28"}}>
+                        <View
+                            style={{position: 'absolute', bottom: 0, width: '100%', padding: 5, flexDirection: "row"}}>
+                            <View style={{flex: 1, margin: 5}}>
+                                <Button full light onPress={this.onKeyBack()} style={{backgroundColor: "#FFCA28"}}>
                                     <Text>Cancel</Text>
                                 </Button>
                             </View>
-                            <View style={{flex:1, margin:5}}>
-                                <Button full light onPress={this.onKeyBack()} style={{backgroundColor:'#00B0FF'}}>
+                            <View style={{flex: 1, margin: 5}}>
+                                <Button full light onPress={this.onKeyBack()} style={{backgroundColor: '#00B0FF'}}>
                                     <Text>Pick Order</Text>
                                 </Button>
                             </View>
@@ -153,12 +177,35 @@ class ScreenPick extends Component {
                         provider={PROVIDER_GOOGLE} // remove if not using Google Maps
                         style={styles.map}
                         region={{
-                            latitude: -7.797068,
-                            longitude: 110.370529,
+                            latitude: -7.71556,
+                            longitude: 110.35556,
                             latitudeDelta: 0.015,
                             longitudeDelta: 0.0121,
                         }}
                     >
+                        <MapView.Marker
+                            coordinate={{
+                                latitude: -7.797068,
+                                longitude: 110.370529
+                            }}
+                        />
+                        <MapView.Marker
+                            coordinate={{
+                                latitude: -7.71556,
+                                longitude: 110.35556
+                            }}
+                        />
+                        <MapViewDirections
+                            origin={{latitude: -7.797068,
+                                longitude: 110.370529}}
+                            destination={{
+                                latitude: -7.71556,
+                                longitude: 110.35556
+                            }}
+                            strokeColor={"#B00020"}
+                            strokeWidth={3}
+                            apikey={GOOGLE_MAPS_APIKEY}
+                        />
                     </MapView>
                 </View>
                 <Content style={{padding: 15}}>
@@ -367,7 +414,7 @@ class ScreenPick extends Component {
 
                     {/*</View>*/}
                 </Content>
-                <Button full light style={{backgroundColor:'#00B0FF'}}>
+                <Button full light style={{backgroundColor: '#00B0FF'}}>
                     <Text>Create Order</Text>
                 </Button>
             </Container>
