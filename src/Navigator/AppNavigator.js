@@ -11,6 +11,7 @@ import OrderScreen from '../Screen/Order/screen-order'
 import WalletScreen from '../Screen/Wallet/screen-wallet'
 import AccountScreen from '../Screen/Account/screen-account'
 import PickScreen from "../Screen/Home/screen-pick"
+import DetailScreen from "../Screen/Order/screen-detail"
 import {connect} from "react-redux";
 import {addListener} from '../Utils/Redux';
 
@@ -24,7 +25,8 @@ export const Home = createBottomTabNavigator({
 export const AppNavigator = createStackNavigator({
     Splash: {screen: SplashScreen},
     Menu:{screen:Home},
-    Pick:{screen:PickScreen}
+    Pick:{screen:PickScreen},
+    Detail:{screen:DetailScreen}
 
 }, {
     headerMode: 'none',

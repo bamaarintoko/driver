@@ -2,17 +2,23 @@ import React, {Component} from 'react';
 import {Container, Content} from "native-base";
 import MapView, {PROVIDER_GOOGLE} from 'react-native-maps';
 import {
-    Platform,
+    Platform, StatusBar,
     StyleSheet,
     Text,
     View
 } from 'react-native';
 import {connect} from 'react-redux';
+import { StackActions, NavigationActions } from 'react-navigation';
 
+const resetAction = StackActions.reset({
+    index: 0,
+    actions: [NavigationActions.navigate({ routeName: 'Menu' })],
+});
 class SplashScreen extends Component {
     componentDidMount() {
         setTimeout(() => {
-            this.props.navigation.navigate("Menu");
+            this.props.navigation.dispatch(resetAction);
+            // this.props.navigation.navigate("Menu");
 
         }, 2000)
     }
@@ -20,8 +26,9 @@ class SplashScreen extends Component {
     render() {
         return (
             <Container>
-
+                <StatusBar backgroundColor="#B00020"/>
                 <View style={styles.container}>
+                    <Text style={styles.welcome}>KamadjajaX</Text>
                     {/*<MapView*/}
                         {/*provider={PROVIDER_GOOGLE} // remove if not using Google Maps*/}
                         {/*style={styles.map}*/}
